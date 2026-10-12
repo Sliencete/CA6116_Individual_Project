@@ -43,7 +43,7 @@ def require_teacher():
     entered = st.text_input("Teacher PIN", type="password")
     if st.button("Unlock Teacher Workspace", type="primary"):
         import hmac
-        if hmac.compare_digest(entered, TEACHER_PIN):
+        if hmac.compare_digest(str(entered), str(TEACHER_PIN)):
             st.session_state.teacher_authorized = True
             st.rerun()
         else:
